@@ -49,6 +49,14 @@ de stocker un int dans une variable annotée str ou bool ou n'importe quel
 autre type; l'importance est dans l'information. Si je lis votre code et 
 je vois qu'une variable est annotée int, j'ai plus d'information sur la 
 variable et alors son cas d'usage (le nom par conséquent est important aussi).
+Cela étant dit, les annotations sont à faire UNE SEULE FOIS lors de la définition 
+de la variable. Il n'est pas nécessaire de donner le type de la variable chaque
+fois que vous la donner une nouvelle valeur. SURTOUT ne la donnez pas une valeur
+d'un autre type en annotant ce nouveau type: Si une variable "var est destinée à 
+stocker un int, il serait souhaitable qu'on ne la trouve pas après dans une 
+instruction de la forme "var: bool = True". Elle devrait toujours rester un int.
+Créez une autre variable si nécessaire, mais ne changez pas de type au milieu
+du code.
 
 Les annotations se font comme suit:
 
@@ -61,25 +69,38 @@ aucune valeur, met "None" pour dire "rien". On peut également mettre ... dans
 la liste des arguments pour dire que cette fonction accepte un nombre variable
 de paramètres. 
 
-Les raccourcis: 
+Tenez quelque raccourcis: 
 
 - Il est possible de mettre juste à côté de deux points ":" une ligne de code 
-sans sauter de lignes. Soit y une instruction quelconque:
+sans sauter de ligne, s'il s'agit d'une seule instruction. Soit y une instruction 
+quelconque:
 
 if x: (y)
 while cond: (y)
 for i in range(x): (y)
 def fonction(): (y)
 
+y ici sera la seule instruction executée par ces blocs. Les instructions après ne
+feront pas parti du bloc présenté (même si vous indentez).
+
 - Il est également possible de faire les instructions conditionelles sur une 
 ligne, mais seulement pour calculer une valeur.
 
-a = (1 if x > y else 2)
+a: int = (1 if x > y else 2) 
+b: bool = (1 == 2)
 
 - Il est possible de peupler une liste d'éléments ou un conteneur avec une 
 expression interne
 
 [f(i) for i in conteneur]
+
+- Il est possible d'associer des valeurs à des variables sur une ligne
+
+x, y = v1, v2...
+
+- Il est possible de créer une chaîne de charactères à partir d'un format
+
+f"Une chaine de charactères peut être formattée pour contenir la valeur d'une variable {var}"
 
 - Finalement, il existe des fonctions anonymes qui peuvent lier un ensemble de
 variables à une expression.

@@ -25,13 +25,23 @@ def pivot_en_place(matrice: list[list]) -> None: ...
 
 # exemples de raccoucis
 if is_true: x += 1 # conditionnel
+
 while is_true: x += 1 # boucle while
+
 for i in range(x): pq += 1 # boucle for 
+
 def addition(x: int, y: int) -> int: return x + y # fonction
+
 minfunc = lambda x, y : (x if x <= y else y) # fonction anonyme (elle peut être utilisée comme une valeur)
-x, y, z = [1, 2, 3] # assignement des valeurs 
-x, y = y, x # échange des valeurs (x = 2, y = 1)
-chaine_format = f"Les chiffres sont {x}, {y} et {z}" # resulte en "Les chiffres sont 2, 1 et 3"
+
+a: int, b: int, c: int = [1, 2, 3] # assignement des valeurs 
+a, b = b, a # échange des valeurs (x = 2, y = 1)
+
+chaine_format: str = f"Les chiffres sont {x}, {y} et {z}" # resulte en "Les chiffres sont 2, 1 et 3"
+
+generateur_liste = [i**2 for i in range(1, 10)] # génère une liste des dix premiers carrés (1, 4, 9, ...)
+
+generateur_2 = [i%3 for i in generateur_liste] # le conteneur peut également être une liste/tuple
 
 # exemple de code obéissant aux conventions
 """ 
