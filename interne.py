@@ -5,6 +5,8 @@ Yvan Van de Steene
 
 from qcm, prng_it import *
 
+# réfère toi au fichier exemple.py pour voir comment les données sont traités par le questionnaire
+
 # cette variable est à remplir, elle est la base de données
 # Les variables définies ici peuvent être utilisés par les fonctions
 database : list
