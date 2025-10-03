@@ -12,6 +12,12 @@ pq: float = 0.5 # ceci est un décimal
 is_true: bool = True # ceci est une valeur booléene
 magritte: str = "Ceci n'est pas une pipe" # ceci est une chaine de charactères
 
+y: int | None = None # Le type est soit int soit rien
+y = 3 # ne pas annoter après la declaration de la variable
+
+v : None # il n'est pas nécessaire de donner une valeur pour annoter une variable, les annotations ne sont pas vérifiés
+# v : int # Ne REANNOTEZ PAS deux fois une variable. Cette ligne est en commentaire pour dire qu'elle est fausse
+
 # annotations des conteneurs
 jour: list = [3.07, 3, "Octobre", 2008, True] # une liste quelconque
 chiffres_de_pi: tuple[int] = (3, 1, 4, 1) # une tuple d'entiers

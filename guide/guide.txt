@@ -23,6 +23,9 @@ list : une liste mutable (c'est à dire tu peux changer l'ordre et la valeur des
 tuple : une liste immutable (c'est à dire qu'elle restera telle qu'elle a été 
 crée)
 
+type1 | type2 : Il s'agit d'une union de type. Elle veut dire que la variable 
+marquée est soit du type1 ou du type2
+
 Les conteneurs:
 
 Ces deux derniers types (list et tuple) sont des types de conteneurs. Pour ces 
