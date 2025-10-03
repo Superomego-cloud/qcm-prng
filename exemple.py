@@ -20,7 +20,7 @@ if __name__ == '__main__':
         
         print(f"\tQuestion {i+1}: {q[0]}")
        
-        # Le j est l'indice
+        # j est l'indice de la réponse
         for j, r in enumerate(q[1]):  
             print(f"\t\tReponse {str(j+1)}:")
             print("\t\t\tMessage: \"" + r[0] + "\"")

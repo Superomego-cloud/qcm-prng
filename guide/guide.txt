@@ -1,0 +1,141 @@
+Guide de python
+Elyas Sahnoune, 3 Octobre 2025
+
+Bonjour, ici je vais juste introduire quelque notions de python que vous 
+trouverez déja remplis dans le code au cas où vous trouvez que c'est trop
+compliqué à utiliser ou bien comprendre.
+
+Les types:
+
+int : le nombre entier
+
+float : le nombre décimal
+
+bool : la booléene (vrai ou faux)
+
+str : la chaine de charactères
+
+None : la valeur nulle (donc rien)
+
+list : une liste mutable (c'est à dire tu peux changer l'ordre et la valeur des
+éléments)
+
+tuple : une liste immutable (c'est à dire qu'elle restera telle qu'elle a été 
+crée)
+
+Les conteneurs:
+
+Ces deux derniers types (list et tuple) sont des types de conteneurs. Pour ces 
+deux derniers types, vous trouverez des expressions telles que:
+
+list/tuple : cela signifie qu'on ne sait rien sur les contenus de cette 
+list/tuple d'éléments, on sait seulement qu'il s'agit d'une list/tuple.
+
+list[type]/tuple[type] : la liste/tuple est composée exclusivement d'éléments
+du type fourni
+
+list[type1, type2, ...]/tuple[type1, type2, ...] : Si vous trouvez une list/
+tuple qui a un ensemble de types, c'est à dire qu'elle détaille le type de
+chacun de ces éléments. Par exemple pour une expression list[int, bool], on a
+que la liste a deux éléments, le premier un int et le deuxième un bool. Si vous 
+ne savez pas le type de TOUS les éléments, utilisez seulement le type list/tuple.
+
+Les annotations de types:
+
+Les variables et les fonctions en python peuvent être annotés, c'est à dire 
+qu'on peut indiquer le type qui est attendu pour cette variable. Ceci est 
+seulement à titre informatif. Il n'y aura pas d'érreur si vous décidez
+de stocker un int dans une variable annotée str ou bool ou n'importe quel 
+autre type; l'importance est dans l'information. Si je lis votre code et 
+je vois qu'une variable est annotée int, j'ai plus d'information sur la 
+variable et alors son cas d'usage (le nom par conséquent est important aussi).
+
+Les annotations se font comme suit:
+
+var: type : la variable "var" est annotée par le type "type". 
+
+def f(x: type1, y: type2, ...) -> type3 : la fonction "f" a un argument "x" 
+de type "type1", un argument "y" de type "type2" et ainsi de suite; cette 
+fonction retourne une valeur de type "type3". Pour une fonction qui ne retourne 
+aucune valeur, met "None" pour dire "rien". On peut également mettre ... dans
+la liste des arguments pour dire que cette fonction accepte un nombre variable
+de paramètres. 
+
+Les raccourcis: 
+
+- Il est possible de mettre juste à côté de deux points ":" une ligne de code 
+sans sauter de lignes. Soit y une instruction quelconque:
+
+if x: (y)
+while cond: (y)
+for i in range(x): (y)
+def fonction(): (y)
+
+- Il est également possible de faire les instructions conditionelles sur une 
+ligne, mais seulement pour calculer une valeur.
+
+a = (1 if x > y else 2)
+
+- Il est possible de peupler une liste d'éléments ou un conteneur avec une 
+expression interne
+
+[f(i) for i in conteneur]
+
+- Finalement, il existe des fonctions anonymes qui peuvent lier un ensemble de
+variables à une expression.
+
+mult = lambda x, y: x * y
+
+Conventions à obéir:
+
+1. Indications: 
+	A. Les commentaires: les commentaires doivent être placés dans chaque 
+bloc de code. Il ne faut pas faire trop peu de commentaires afin que les futurs 
+développeurs du code puissent lire et comprendre le code, et il ne faut pas 
+abuser non plus. Chaque fois que vous commencez une boucle for/while, que vous 
+faites une instruction conditionnelle, ou que vous créez une variable/ fonction 
+(annotée bien sûr), vous devez préciser votre raison de faire. Ce n'est pas 
+nécessaire pour des instructions ou des assignements de valeur simples (c'est à 
+dire quand vous ajoutez une valeur ou vous assignez une valeur évidente à une 
+variable), mais c'est important quand vous utilisez des formules non-évidentes, 
+ou quand vous faites quelque chose de nouvelle/innatendue. Vous devez expliquer 
+tout ce qui est interresant, les grandes phrases de votre code quoi.
+
+	B. Les docstring: quand vous faites """ [explication] """ ceci est appelé 
+un docstring. Les commentaires sont utilisés pour mettre des remarques simples
+sur une partie de code (ils commencent par #). Les docstrings, quant à eux, sont 
+utilisés pour faire des remarques plus longues et plus rédigées. Il s'agit 
+généralement d'une indication de documentation. Ils sont à mettre au début de votre
+fichier .py pour donner une explication générale de la création du fichier. Vous
+y mettez l'intitulé du problème à résoudre ou du projet, votre nom, une date si
+applicable et une description générale de la raison d'être du fichier. Vous
+le mettez également en dessous de la définition du nom d'une fonction pour 
+expliquer cette fonction également. Vous ne le mettez pas dans votre code.
+
+2. La convention de nomenclature: les variables doivent utiliser snake_case. C'est à 
+dire toutes les variables ne contiennent que des lettres minuscules sans accent 
+et des chiffres séparées par des tirets bas (_). Le nom de fonction et de variable ne
+peut pas commencer par un chiffre car ça fera une érreur, mais c'est correct de les 
+utiliser après. Les variables doivent être bien nommées, pas trop longs pour faciliter
+leur usage, mais pas trop courts sinon on comprend rien. Les valeurs constantes et 
+remarquables (elles ne changeront pas, mais seront utilisées par le programme) sont
+écrits en lettres complètement majuscules (par exemple on peut écrire la constante pi
+comme "PI" dans notre code). 
+
+3. Les espaces: Entre chacun des lignes et des boucles, et surtout pour faciliter la 
+lecture, il faut aérer le code (ça c'est surtout ciblé vers toi Julien). Faites des 
+espaces au début et à la fin de chaque boucle for/while, chaque instruction 
+conditionnelle, et après chaque bloc de déclaration de variables. On peut plus 
+facilement distinguer les parties des codes, savoir quand chacune des boucles 
+commencent et terminent.
+
+Veuillez trouver dans ce même dossier un fichier guide-ex.py qui montre à quoi ces 
+principes ressemblent en pratique. Si vous avez des questions sur un principe de 
+programmation ou bien sur des éléments de python, n'hésitez pas à me demander. 
+Si je suis pas disponible, vous pouvez rechercher sur google (les sites 
+geeks-for-geeks et W3schools sont très bons pour les questions de programmation) 
+ou bien demander à une IA. Cela ne veut ABSOLUMENT PAS dire que vous devez utiliser 
+une IA pour écrire votre code à votre place. C'est non-seulement car le code d'une 
+IA peut être non-fonctionnel ou mal rédigé, mais également car les IA génératives 
+rédigent leur code d'une manière assez remarquable; les profs sauront que vous avez 
+utilisé une IA et on perdera tous nos points à cause de vous.
