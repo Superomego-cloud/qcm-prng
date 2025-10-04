@@ -11,7 +11,7 @@ import math, random
 random.seed()
 
 # variables privées pour qu'elles ne soient pas accédées par un tiers si jamais
-# Trouver une manière de générer la graine
+# Trouver une manière de générer la graine autre que la librairie random
 __graine: int = random.randint(1, int(1e9 + 6))
 __last: int = __graine
 __p1: int = 13
@@ -19,15 +19,15 @@ __p2: int = 5
 __m: int = int(1e9) + 7
 
 def generer_nombre(a: int, b: int) -> int:
-
-    global __last
-
     """
     Fonction qui génère un nombre aléatoire en utilisant un generateur 
     de congruence linéaire (LCG). L'implémentation est un générateur 
     multiplicatif (MCG), qui utilise les racines primitives pour créer
     une période de 1e9 + 7
     """
+
+    global __last
+
     assert(b >= a)
     
     if __last == 0: __last = 1
@@ -65,9 +65,9 @@ def generer_permutation(entree:list) -> list:
 def test(x: int) -> bool | float:
     
     """
-    Fonction qui teste, pour une séquence de x éléments s'ils furent assez bien distribués.
-    Si la distribution n'est pas assez uniforme (σ(X) > 2%), elle donne faux, sinon elle donne
-    l'écart type résultant
+    Fonction qui teste, pour une séquence de x éléments s'ils furent assez bien
+    distribués. Si la distribution n'est pas assez uniforme (σ(X) > 2%), elle 
+    retourne faux, sinon elle retourne l'écart type résultant
     """
 
     cmp: list[int] = [0]*10 # le compte des nombres générés par le prng
@@ -89,20 +89,20 @@ def test(x: int) -> bool | float:
 def is_correct(x: int = int(1e5), itr: int = 10) -> bool:
     
     """
-    Fonction qui teste itr instances différentes du PRNG générant une séquence de x éléments.
-    Si le PRNG échoue dans une des instances, ou bien que le PRNG donne deux séquences identiques
-    (ce qui est statistiquement impossible pour itr petit), la fonction retourne faux, sinon
-    elle retourne vrai.
+    Fonction qui teste itr instances différentes du PRNG générant une séquence 
+    de x éléments. Si le PRNG échoue dans une des instances, ou bien que le PRNG
+    donne deux séquences identiques (ce qui est statistiquement impossible pour 
+    itr petit), la fonction retourne faux, sinon elle retourne vrai.
     """
-
+    
     scount: int = itr # nombre de graines à vérifier 
     ln: int = x # longueur de suite
     st: list[float] = [] # ensemble contenant les écart-types déja vus (statistiquement impossible d'avoir deux écart types égaux)
-
-	for i in range(1, scount+1): 
-		
+    
+    for i in range(1, scount+1): 
+    
         rst: float = test(ln)
-		if not rst or rst in st: return False
-		st.append(rst)
-
-	return True
+        if not rst or rst in st: return False
+        st.append(rst)
+    
+    return True

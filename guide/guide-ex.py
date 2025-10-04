@@ -2,8 +2,8 @@
 Fichier exemple
 Elyas Sahnoune, 3 Octobre 2025
 
-Il s'agit d'un fichier contenant un ensemble de snippets de code explicitant les conventions 
-et les idées présentées dans le fichier annexe guide.txt
+Il s'agit d'un fichier contenant un ensemble de snippets de code explicitant les
+conventions et les idées présentées dans le fichier annexe guide.txt
 """
 
 # Annotations de variables simples
@@ -15,8 +15,12 @@ magritte: str = "Ceci n'est pas une pipe" # ceci est une chaine de charactères
 y: int | None = None # Le type est soit int soit rien
 y = 3 # ne pas annoter après la declaration de la variable
 
-v : None # il n'est pas nécessaire de donner une valeur pour annoter une variable, les annotations ne sont pas vérifiés
-# v : int # Ne REANNOTEZ PAS deux fois une variable. Cette ligne est en commentaire pour dire qu'elle est fausse
+# Il n'est pas nécessaire de donner une valeur pour annoter une variable.
+# Les annotations ne sont pas vérifiés
+v: None
+
+# Ne REANNOTEZ PAS deux fois une variable.
+# v: int
 
 # annotations des conteneurs
 jour: list = [3.07, 3, "Octobre", 2008, True] # une liste quelconque
@@ -25,29 +29,28 @@ sont_premiers: tuple[list[int], bool] = ([2, 3, 5, 7], True) # un tuple de deux 
 
 # annotations de fonctions
 def multiplier(x: int, y: int) -> int: ...
-def somme(liste: list[int]) -> int: ...
-def supersomme(...) -> int: ...
+def somme(liste: list[int]) -> int: ... 
+def supersomme(...) -> int: ... # cette fonction prend plusieurs arguments
 def pivot_en_place(matrice: list[list]) -> None: ...
 
 # exemples de raccoucis
 if is_true: x += 1 # conditionnel
-
 while is_true: x += 1 # boucle while
-
 for i in range(x): pq += 1 # boucle for 
-
 def addition(x: int, y: int) -> int: return x + y # fonction
-
 minfunc = lambda x, y : (x if x <= y else y) # fonction anonyme (elle peut être utilisée comme une valeur)
 
 a: int, b: int, c: int = [1, 2, 3] # assignement des valeurs 
 a, b = b, a # échange des valeurs (x = 2, y = 1)
 
-chaine_format: str = f"Les chiffres sont {x}, {y} et {z}" # resulte en "Les chiffres sont 2, 1 et 3"
-
+# exemple des conventions de nomenclature
+chaine_format: str = f"Les chiffres sont {a}, {b} et {c}" # resulte en "Les chiffres sont 2, 1 et 3"
 generateur_liste = [i**2 for i in range(1, 10)] # génère une liste des dix premiers carrés (1, 4, 9, ...)
-
 generateur_2 = [i%3 for i in generateur_liste] # le conteneur peut également être une liste/tuple
+PI: float = 3.14159
+
+assert(generateur_2[0] == 1) # les listes commencent par l'élément 0 
+
 
 # exemple de code obéissant aux conventions
 """ 
