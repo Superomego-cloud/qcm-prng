@@ -1,11 +1,16 @@
 """
 Implémentation de PRNG
 Elyas Sahnoune
-"""
 
+Il s'agit d'un PRNG qui utilise les racines primitives dans un MCG pour
+générer une distribution aléatoire et uniforme. Il y a une fonction pour
+générer un entier et une autre pour permuter une liste.
+"""
 import math, random
 
 random.seed()
+
+# variables privées pour qu'elles ne soient pas accédées par un tiers si jamais
 # Trouver une manière de générer la graine
 __graine: int = random.randint(1, int(1e9 + 6))
 __last: int = __graine
@@ -65,20 +70,18 @@ def test(x: int) -> bool | float:
     l'écart type résultant
     """
 
-    cmp = [0]*10 # le compte des nombres générés par le prng
+    cmp: list[int] = [0]*10 # le compte des nombres générés par le prng
 	
     for i in range(x): 
     
-        gnum = generer_nombre(0, 9) # nombre généré
+        gnum: int = generer_nombre(0, 9) # nombre généré
 		
         if gnum < 0 or gnum > 9: return False
         cmp[gnum] += 1
     
-    print(cmp)
-    
-    moy = sum(cmp)/len(cmp) # moyenne
-    var = (sum([v**2 for v in cmp])/len(cmp)) - moy**2 # variance
-    et = math.sqrt(var) # écart-type
+    moy: float = sum(cmp)/len(cmp) # moyenne
+    var: float = (sum([v**2 for v in cmp])/len(cmp)) - moy**2 # variance
+    et: float = math.sqrt(var) # écart-type
     
     if ((et*10)/x) > 0.02: return False
     return et
@@ -92,13 +95,13 @@ def is_correct(x: int = int(1e5), itr: int = 10) -> bool:
     elle retourne vrai.
     """
 
-	scount = 10 # nombre de graines à vérifier 
-	itr = 100000 # longueur de suite
-	st = [] # ensemble contenant les écart-types déja vus (statistiquement impossible d'avoir deux écart types égaux)
+    scount: int = itr # nombre de graines à vérifier 
+    ln: int = x # longueur de suite
+    st: list[float] = [] # ensemble contenant les écart-types déja vus (statistiquement impossible d'avoir deux écart types égaux)
 
 	for i in range(1, scount+1): 
 		
-		rst = test(itr)
+        rst: float = test(ln)
 		if not rst or rst in st: return False
 		st.append(rst)
 
