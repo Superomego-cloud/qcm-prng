@@ -17,7 +17,7 @@ def afficher_questionnaire() -> bool:
     veut continuer ou non. Si oui, la fonction retourne True, sinon elle 
     retourne False
 
-    T'es pas limité à cette question, tu peux créer d'autres pour résoudre
+    T'es pas limité à cette fonction, tu peux créer d'autres pour résoudre
     d'autres sous problèmes
 
     Pour voir les fonctions qui sont disponible, lis le fichier interne.py et
