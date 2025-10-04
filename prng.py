@@ -22,13 +22,13 @@ def generer_nombre(a: int, b: int) -> int:
     """
     Fonction qui génère un nombre aléatoire en utilisant un generateur 
     de congruence linéaire (LCG). L'implémentation est un générateur 
-    multiplicatif (MCG), qui utilise les racines primitives pour créer
+    multiplicatif (MCG) qui utilise les racines primitives pour créer
     une période de 1e9 + 7
     """
 
     global __last
 
-    assert(b >= a)
+    a, b = min(a, b), max(a, b)
     
     if __last == 0: __last = 1
     
