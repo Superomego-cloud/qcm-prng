@@ -16,7 +16,20 @@ from prng import *
 __database : list
 __last : int = 0
 __malus : int = 0
-__bonne : int = 0 
+__bonne : int = 0
+__mode : list[bool, bool] = [True]*2
+
+def initialiser_modes(entree: str) -> None:
+    """
+    Fonction qui permet de définir le mode de notation par la suite.
+    Elle prend comme entrée les différentes options qu'a l'utilisateur.
+    N: notation normale, M: notation sévère, D: les deux styles  
+    Le mode D est celui par défaut.
+    """
+    ins = entree.strip()
+    if ins.upper() == "N": __mode[1] = False
+    elif ins.upper() == "M": __mode[0] = False
+
 
 def initialiser_donnees(entree: str) -> None:
     """
@@ -34,9 +47,20 @@ def traiter_question(entree: str) -> tuple[bool, str]:
     Cette fonction sera appelée par l'élément d'affichage pour savoir si la 
     réponse donnée est correcte ou fausse
     """
+    
+    ret = [True, ""]
+
     entree = int(entree)
-    if __database[__last][1][entree]: __bonne += 1
-    else: __malus += 1  
+    if __database[__last][1][entree][1]: 
+        __bonne += 1
+        ret[0] = True
+    else: 
+        __malus += 1
+        ret[0] = False
+
+    ret[1] = __database[__last][1][entree][2]
+
+    return tuple(ret)
          
  
 def question_suivante() -> list:
@@ -63,4 +87,4 @@ def note_finale() -> tuple[int | None, int | None]:
     la notation sévère. Si les paramètres de l'utilisateur font qu'il veuille 
     qu'un des deux, l'autre valeur doit être None
     """
-    return (__bonne, __bonne - __malus)
+    return ((__bonne if __mode[0] else None),(__bonne - __malus if __mode[0] else None))
