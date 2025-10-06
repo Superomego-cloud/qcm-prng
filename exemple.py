@@ -4,8 +4,6 @@ import qcm
     Exemple d'utilisation de la librairie de lecture de fichiers QCM
 """
 
-def traiter_entree(qst, )
-
 if __name__ == '__main__':
     filename = "QCM.txt"
 
