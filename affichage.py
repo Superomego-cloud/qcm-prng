@@ -23,3 +23,7 @@ def afficher_questionnaire() -> bool:
     Pour voir les fonctions qui sont disponible, lis le fichier interne.py et
     cherche pour les déclarations de fonctions qui sont disponibles
     """
+    
+    print ("hello world")
+
+afficher_questionnaire()
